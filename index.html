@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine?</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    background: rgba(255,255,255,0.2);
+    padding: 40px;
+    border-radius: 20px;color:;
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.yes-btn {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+.no-btn {
+    background-color: white;
+    color: #ff4d6d;
+    position: relative;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+input[type="date"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="questionBox">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button class="yes-btn" onclick="showDate()">Yes 💗</button>
+    <button class="no-btn" id="noButton" onmouseover="moveButton()">No 🙈</button>
+</div>
+
+<div class="container hidden" id="dateBox">
+    <h1>Yay 🥰 Pick a date for our adventure</h1>
+    <input type="date" id="datePicker">
+    <br>
+    <button class="yes-btn" onclick="confirmDate()">Confirm 💐</button>
+</div>
+
+<div class="container hidden" id="finalBox">
+    <h1>It’s officially a date 💖</h1>
+    <p>I promise it’ll be unforgettable ✨</p>
+</div>
+
+<script>
+function showDate() {
+    document.getElementById("questionBox").classList.add("hidden");
+    document.getElementById("dateBox").classList.remove("hidden");
+}
+
+function confirmDate() {
+    const date = document.getElementById("datePicker").value;
+    if(date === "") {
+        alert("Pick a date first 😌");
+        return;
+    }
+    document.getElementById("dateBox").classList.add("hidden");
+    document.getElementById("finalBox").classList.remove("hidden");
+}
+
+function moveButton() {
+    const button = document.getElementById("noButton");
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    button.style.transform = `translate(${x}px, ${y}px)`;
+}
+</script>
+
+</body>
+</html>
